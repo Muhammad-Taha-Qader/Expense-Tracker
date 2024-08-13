@@ -14,10 +14,12 @@ interface ItemFormProps{
     setTypeChange: (React.Dispatch<React.SetStateAction<string>>);
     type: string;
     setDispChange:(React.Dispatch<React.SetStateAction<string>>);
+    disciption: string;
     setCataChange:(React.Dispatch<React.SetStateAction<string>>);
+    category:string;
 };
 
-const ItemForm:React.FC<ItemFormProps> = ({setAmountChange, amount, setTypeChange, setDispChange, setCataChange, type})=>{
+const ItemForm:React.FC<ItemFormProps> = ({setAmountChange, amount, setTypeChange, setDispChange, disciption, setCataChange, category, type})=>{
     // function handleInputAmountChange(event: ChangeEvent<HTMLInputElement>) : void{
     const handleInputAmountChange = (event: ChangeEvent<HTMLInputElement>) : void => {
         setAmountChange(parseFloat(event.target.value));
@@ -42,20 +44,22 @@ const ItemForm:React.FC<ItemFormProps> = ({setAmountChange, amount, setTypeChang
     //     // handleCataChange(inputCat);
     // }
     return (
-        <div className="flex bg-amber-600">
+        <div className="flex gap-x-5 justify-center">
             {/* <input type="number" name="income" id="income" onChange={() => handleAmountChange(parseFloat(event.target.value))}/> */}
-            <input type="number" name="income" id="income" value={amount!==null? amount:""} onChange={handleInputAmountChange}/>
+            <input className="bg-green-100" type="number" name="income" id="income" value={amount!==null? amount:""} onChange={handleInputAmountChange} placeholder="Amount..."/>
             <label htmlFor="incomeOrExpense"></label>
-            <select id="incomeOrExpense" name="incomeOrExpense" onChange={handleInputTypeChange}>
+            <select id="incomeOrExpense" name="incomeOrExpense" value={type} onChange={handleInputTypeChange} className="bg-green-100">
             {/* <select id="incomeOrExpense" name="incomeOrExpense" value={type} onChange={handleTypeChange}> */}
                 <option value="Expense">Expense</option>
                 <option value="Income">Income</option>
             </select>
-            <input type="text" name="disp" id="disp" onChange={handleInputDispChange}/>
+            <input type="text" name="disp" id="disp"  value={disciption} onChange={handleInputDispChange} className="bg-green-100" placeholder="Description..."/>
             {type === "Expense" && (
-                <select id="category" name="category" onChange={handleInputCatChange}>
+                <select id="category" name="category" value={category} onChange={handleInputCatChange} className="bg-green-100">
                     <option value="Health">Health</option>
                     <option value="Travel">Travel</option>
+                    <option value="Bills">Bills</option>
+                    <option value="Rents">Rents</option>
                 </select>
             )}
         </div>

@@ -1,5 +1,4 @@
 import React from "react";
-import Item from "./Item";
 import ItemForm from "./ItemForm";
 import { useState, SetStateAction, ChangeEvent, useRef } from "react";
 import "./Table";
@@ -51,16 +50,15 @@ function ExpenseTracker() {
   };
 
   return (
-    <div >
-      {totalBalance}
+    <div className="flex flex-col items-center">
+      <h1 className="text-center mt-5 mb-8"><strong>Current Blanace:</strong> {totalBalance}</h1>
       <ItemForm 
         setAmountChange={setAmount} amount={amount} setTypeChange={setType} type={type}
-        setDispChange={setDisciption} setCataChange={setCategory} 
+        setDispChange={setDisciption} disciption={disciption}  setCataChange={setCategory}  category={category}
       />
-      <button type="button" onClick={handleAdd}>Add</button>
+      <button type="button" onClick={handleAdd} className="bg-green-400 rounded-lg px-6 mt-6 mb-6">Add</button>
       <Table ref={childTableRef} setTableItems={setTableItems} newTableItem={{amount:amount, type:type, dis:disciption, category:category}} tableItems={tableItems}/>
-      {<p>type set is: {type} , {amount}, {category}, {disciption}</p>}
-      <Item/>
+      {/* {<p>type set is: {type} , {amount}, {category}, {disciption}</p>} */}
     </div>
   );
 }
