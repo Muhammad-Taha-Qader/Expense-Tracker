@@ -46,20 +46,23 @@ const ItemForm:React.FC<ItemFormProps> = ({setAmountChange, amount, setTypeChang
     return (
         <div className="flex gap-x-5 justify-center">
             {/* <input type="number" name="income" id="income" onChange={() => handleAmountChange(parseFloat(event.target.value))}/> */}
-            <input className="bg-green-100" type="number" name="income" id="income" value={amount!==null? amount:""} onChange={handleInputAmountChange} placeholder="Amount..."/>
+            <input className="bg-green-200 px-2 py-1 rounded-lg" type="number" name="income" id="income" value={amount!==null? amount:""} onChange={handleInputAmountChange} placeholder="Amount..."/>
             <label htmlFor="incomeOrExpense"></label>
-            <select id="incomeOrExpense" name="incomeOrExpense" value={type} onChange={handleInputTypeChange} className="bg-green-100">
+            <select id="incomeOrExpense" name="incomeOrExpense" value={type} onChange={handleInputTypeChange} className="bg-green-200 px-2 py-1 rounded-lg">
             {/* <select id="incomeOrExpense" name="incomeOrExpense" value={type} onChange={handleTypeChange}> */}
                 <option value="Expense">Expense</option>
                 <option value="Income">Income</option>
             </select>
-            <input type="text" name="disp" id="disp"  value={disciption} onChange={handleInputDispChange} className="bg-green-100" placeholder="Description..."/>
+            <input type="text" name="disp" id="disp"  value={disciption} onChange={handleInputDispChange} className="bg-green-200 px-2 py-1 rounded-lg" placeholder="Description..."/>
             {type === "Expense" && (
-                <select id="category" name="category" value={category} onChange={handleInputCatChange} className="bg-green-100">
+                <select id="category" name="category" value={category} onChange={handleInputCatChange} className="bg-green-200 px-2 py-1 rounded-lg">
                     <option value="Health">Health</option>
                     <option value="Travel">Travel</option>
                     <option value="Bills">Bills</option>
                     <option value="Rents">Rents</option>
+                    <option value="Fun">Fun</option>
+                    <option value="Grocery">Grocery</option>
+                    <option value="Shopping">Shopping</option>
                 </select>
             )}
         </div>
